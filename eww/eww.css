@@ -1,0 +1,301 @@
+@import "../colors/colors.css";
+
+/* ====================
+   CONTROL CENTER BASE
+   ==================== */
+
+.control-center {
+    background-color: @base;
+    border-radius: 16px;
+    border: 1px solid @surface0;
+    padding: 0;
+}
+
+/* ====================
+   TABS NAVIGATION
+   ==================== */
+
+.tabs-container {
+    background-color: @mantle;
+    border-radius: 16px 16px 0 0;
+    padding: 12px;
+    border-bottom: 1px solid @surface0;
+}
+
+.tab-btn {
+    all: unset;
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 12px 0;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    background-color: @surface0;
+}
+
+.tab-btn.active {
+    background-color: @surface1;
+}
+
+.tab-icon {
+    font-size: 24px;
+    color: @text;
+}
+
+.tab-btn.active .tab-icon {
+    color: @mauve;
+}
+
+/* ====================
+   TAB CONTENT
+   ==================== */
+
+.tab-content {
+    padding: 24px;
+}
+
+/* ====================
+   CALENDAR TAB
+   ==================== */
+
+.calendar-content {
+    padding: 0;
+}
+
+.time-calendar-section {
+    min-width: 280px;
+}
+
+.time-section {
+    margin-bottom: 16px;
+}
+
+.time-display {
+    font-size: 48px;
+    font-weight: bold;
+    color: @text;
+    letter-spacing: -2px;
+}
+
+.date-display {
+    font-size: 14px;
+    color: @subtext0;
+}
+
+.calendar-widget {
+    margin: 0;
+}
+
+calendar {
+    background-color: transparent;
+    color: @text;
+    border: none;
+    border-radius: 12px;
+    padding: 8px;
+}
+
+calendar:selected {
+    background-color: @mauve;
+    border-radius: 8px;
+}
+
+calendar:indeterminate {
+    color: @overlay0;
+}
+
+/* Profile Section */
+
+.profile-section {
+    padding-left: 24px;
+    border-left: 1px solid @surface0;
+}
+
+.profile-picture {
+    min-width: 80px;
+    min-height: 80px;
+    background-color: @surface0;
+    border-radius: 40px;
+}
+
+.profile-icon {
+    font-size: 48px;
+    color: @mauve;
+}
+
+.profile-info {
+    padding: 0;
+}
+
+.profile-name {
+    font-size: 32px;
+    font-weight: bold;
+    color: @text;
+}
+
+.spec-row {
+    padding: 3px 0;
+}
+
+.spec-icon {
+    font-size: 14px;
+    background-color: gray;
+    padding: 0;
+    margin: 0;
+    color: @mauve;
+}
+
+.spec-text {
+    font-size: 13px;
+    color: @subtext1;
+}
+
+/* ====================
+   MUSIC TAB
+   ==================== */
+
+.music-content {
+    padding: 0;
+}
+
+.music-cover-container {
+    min-width: 200px;
+}
+
+.music-cover-large {
+    min-width: 200px;
+    min-height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.music-controls-section {
+    padding-left: 24px;
+}
+
+.music-title-large {
+    font-size: 22px;
+    font-weight: bold;
+    color: @text;
+}
+
+.music-artist-large {
+    font-size: 16px;
+    color: @subtext0;
+}
+
+.progress-section {
+    margin: 0;
+}
+
+.music-progress {
+    all: unset;
+    min-height: 6px;
+    border-radius: 3px;
+    background-color: @surface0;
+}
+
+.music-progress trough {
+    all: unset;
+    min-height: 6px;
+    border-radius: 3px;
+    background-color: @surface0;
+}
+
+.music-progress highlight {
+    all: unset;
+    background-color: @mauve;
+    border-radius: 3px;
+}
+
+.music-progress slider {
+    all: unset;
+    min-width: 0;
+    min-height: 0;
+    background-color: transparent;
+}
+
+.time-labels {
+    margin-top: 8px;
+}
+
+.time-current,
+.time-total {
+    font-size: 12px;
+    color: @subtext0;
+}
+
+.music-controls-large {
+    margin: 0;
+}
+
+.music-btn-large {
+    all: unset;
+    background-color: @surface0;
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 22px;
+    color: @text;
+    transition: all 0.2s ease;
+}
+
+.music-btn-large:hover {
+    background-color: @surface1;
+}
+
+.music-play-large {
+    background-color: @mauve;
+    padding: 14px 22px;
+}
+
+.music-play-large:hover {
+    background-color: @pink;
+}
+
+/* ====================
+   SYSTEM TAB - CIRCULAR
+   ==================== */
+
+.system-content {
+    padding: 0;
+}
+
+.circular-metric {
+    padding: 12px;
+}
+
+.circular-container {
+    padding: 4px;
+}
+
+.circular-bar {
+    min-width: 120px;
+    min-height: 120px;
+    border-radius: 60px;
+}
+
+.circular-inner {
+    padding: 30px;
+}
+
+.metric-value-large {
+    font-size: 24px;
+    font-weight: bold;
+    color: @text;
+}
+
+.metric-temp,
+.metric-swap,
+.metric-io {
+    font-size: 10px;
+    color: @subtext0;
+}
+
+.metric-label-large {
+    font-size: 15px;
+    font-weight: 600;
+    color: @text;
+    margin-top: 8px;
+}

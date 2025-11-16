@@ -1,0 +1,501 @@
+;; ====================
+;; CONTROL CENTER CONFIG
+;; ====================
+
+(defwindow control-center
+  :monitor 0
+  :geometry (geometry
+    :x "0px"
+    :y "20px"
+    :width "700px"
+    :height "300px"
+    :anchor "top center")
+  :stacking "overlay"
+  :exclusive false
+  :focusable false
+  (control-center-widget))
+
+(defvar current-tab "calendar")
+
+(defwidget control-center-widget []
+  (box
+    :class "control-center"
+    :orientation "v"
+    :space-evenly false
+    :spacing 0
+
+    ;; Onglets de navigation
+    (box
+      :class "tabs-container"
+      :spacing 0
+      :space-evenly true
+      :hexpand true
+
+      (button
+        :class "tab-btn ${current-tab == 'calendar' ? 'active' : ''}"
+        :onclick "eww update current-tab=calendar"
+        :hexpand true
+        (label :class "tab-icon" :text "󰃭"))
+
+      (button
+        :class "tab-btn ${current-tab == 'music' ? 'active' : ''}"
+        :onclick "eww update current-tab=music"
+        :hexpand true
+        (label :class "tab-icon" :text "󰎈"))
+
+      (button
+        :class "tab-btn ${current-tab == 'system' ? 'active' : ''}"
+        :onclick "eww update current-tab=system"
+        :hexpand true
+        (label :class "tab-icon" :text "󰍛")))
+
+    ;; Contenu des onglets
+    (box
+      :class "tab-content"
+      :orientation "v"
+
+      ;; Onglet Calendrier
+      (revealer
+        :reveal "${current-tab == 'calendar'}"
+        :visible "${current-tab == 'calendar'}"
+        :transition "slidedown"
+        :duration "300ms"
+        (calendar-tab))
+
+      ;; Onglet Musique
+      (revealer
+        :reveal "${current-tab == 'music'}"
+        :visible "${current-tab == 'music'}"
+        :transition "slidedown"
+        :duration "300ms"
+        (music-tab))
+
+      ;; Onglet Système
+      (revealer
+        :reveal "${current-tab == 'system'}"
+        :visible "${current-tab == 'system'}"
+        :transition "slidedown"
+        :duration "300ms"
+        (system-tab)))))
+
+;; ====================
+;; ONGLET CALENDRIER
+;; ====================
+
+(defwidget calendar-tab []
+    (box
+        :class "calendar-content"
+        :orientation "h"
+        :space-evenly false
+        :spacing 24
+
+        ;; Section gauche : Horloge + Calendrier
+        (box
+        :class "time-calendar-section"
+        :orientation "v"
+        :space-evenly false
+        :spacing 20
+        :valign "start"
+
+        ;; Heure
+        (box
+            :class "time-section"
+            :orientation "v"
+            :space-evenly false
+            :spacing 8
+            :halign "center"
+
+            (label
+            :class "time-display"
+            :text "${time-hour}")
+            (label
+            :class "date-display"
+            :text "${time-date}")
+        )
+
+        ;; Calendrier
+        (box
+            :class "calendar-widget"
+            :halign "center"
+            (calendar :show-week-numbers false)
+        )
+    )
+
+    ;; Section droite : Photo de profil + Infos
+    (box
+        :class "profile-section"
+        :orientation "v"
+        :space-evenly false
+        :spacing 20
+        :valign "start"
+            (box
+                :class "photo-name"
+                :orientation "h"
+                :space-evenly false
+                :spacing 20
+                :hexpand true
+                :valign "start"
+
+                ;; Photo de profil
+                (box
+                    :class "profile-picture"
+                    :valign "start"
+                    (label :class "profile-icon" :text "󰀄")
+                )
+
+                ;; Infos utilisateur
+                (label
+                :class "profile-name"
+                :text "${user-name}"
+                :halign "start")
+            )
+           (box
+    :class "profile-info"
+    :orientation "v"
+    :spacing 8
+    ;; Hostname
+    (box
+        :class "spec-row"
+        :spacing 8
+        :halign "start"
+        :hexpand true
+        (label :class "spec-icon" :width 2 :text "󰟀")
+        (label
+            :class "spec-text"
+            :text "${hostname}"
+            :halign "start"
+            :xalign 0.0
+            :hexpand true
+            :limit-width 50
+            :truncate true
+        )
+    )
+    ;; Uptime
+    (box
+        :class "spec-row"
+        :spacing 8
+        :halign "start"
+        :hexpand true
+        (label :class "spec-icon" :width 2 :text "󰥔")
+        (label
+            :class "spec-text"
+            :text "${uptime}"
+            :halign "start"
+            :xalign 0.0
+            :hexpand true
+            :limit-width 50
+            :truncate true
+        )
+    )
+    ;; RAM
+    (box
+        :class "spec-row"
+        :spacing 8
+        :halign "start"
+        :hexpand true
+        (label :class "spec-icon" :width 2 :text "󰍛")
+        (label
+            :class "spec-text"
+            :text "${ram-total} RAM"
+            :halign "start"
+            :xalign 0.0
+            :hexpand true
+            :limit-width 50
+            :truncate true
+        )
+    )
+    ;; CPU
+    (box
+        :class "spec-row"
+        :spacing 8
+        :halign "start"
+        :hexpand true
+        (label :class "spec-icon" :width 2 :text "󰻠")
+        (label
+            :class "spec-text"
+            :text "${cpu-model}"
+            :halign "start"
+            :xalign 0.0
+            :hexpand true
+            :limit-width 50
+            :truncate true
+        )
+    )
+)
+
+        )
+    )
+)
+
+;; ====================
+;; ONGLET MUSIQUE
+;; ====================
+
+(defwidget music-tab []
+  (box
+    :class "music-content"
+    :orientation "h"
+    :space-evenly false
+    :spacing 24
+
+    ;; Cover à gauche
+    (box
+      :class "music-cover-container"
+      :valign "center"
+      (box
+        :class "music-cover-large"
+        :style "background-image: url('${music-cover}');"))
+
+    ;; Contrôles à droite
+    (box
+      :class "music-controls-section"
+      :orientation "v"
+      :space-evenly false
+      :spacing 24
+      :hexpand true
+      :vexpand true
+      :valign "center"
+
+      ;; Titre et artiste
+      (box
+        :orientation "v"
+        :space-evenly false
+        :spacing 8
+
+        (label
+          :class "music-title-large"
+          :limit-width 40
+          :wrap true
+          :text "${music-title}"
+          :halign "start")
+        (label
+          :class "music-artist-large"
+          :limit-width 40
+          :wrap true
+          :text "${music-artist}"
+          :halign "start"))
+
+      ;; Barre de progression
+      (box
+        :class "progress-section"
+        :orientation "v"
+        :space-evenly false
+        :spacing 8
+
+        (scale
+          :class "music-progress"
+          :value "${music-position-percent}"
+          :min 0
+          :max 100
+          :onchange "playerctl position $(echo {} | awk '{print $1 * '${music-length}' / 100}')")
+
+        (box
+          :class "time-labels"
+          :space-evenly true
+          (label :class "time-current" :text "${music-position-time}" :halign "start")
+          (label :class "time-total" :text "${music-length-time}" :halign "end")))
+
+      ;; Contrôles
+      (box
+        :class "music-controls-large"
+        :halign "start"
+        :spacing 16
+
+        (button
+          :class "music-btn-large"
+          :onclick "playerctl previous"
+          (label :text "󰒮"))
+
+        (button
+          :class "music-btn-large music-play-large"
+          :onclick "playerctl play-pause"
+          (label :text "${music-status == 'Playing' ? '󰏤' : '󰐊'}"))
+
+        (button
+          :class "music-btn-large"
+          :onclick "playerctl next"
+          (label :text "󰒭"))))))
+
+;; ====================
+;; ONGLET SYSTÈME
+;; ====================
+
+(defwidget system-tab []
+  (box
+    :class "system-content"
+    :orientation "h"
+    :space-evenly true
+    :spacing 20
+
+    ;; CPU
+    (box
+      :class "circular-metric"
+      :orientation "v"
+      :space-evenly false
+      :spacing 12
+      :halign "center"
+
+      (box
+        :class "circular-container"
+        (overlay
+          (box
+            :class "circular-bar cpu-circular"
+            :style "background: conic-gradient(@blue 0deg ${cpu-usage * 3.6}deg, @surface0 ${cpu-usage * 3.6}deg 360deg);")
+          (box
+            :class "circular-inner"
+            :orientation "v"
+            :space-evenly false
+            :spacing 2
+            (label :class "metric-value-large" :text "${cpu-usage}%")
+            (label :class "metric-temp" :text "${cpu-temp}°C"))))
+
+      (label :class "metric-label-large" :text "󰻠 CPU"))
+
+    ;; RAM
+    (box
+      :class "circular-metric"
+      :orientation "v"
+      :space-evenly false
+      :spacing 12
+      :halign "center"
+
+      (box
+        :class "circular-container"
+        (overlay
+          (box
+            :class "circular-bar ram-circular"
+            :style "background: conic-gradient(@mauve 0deg ${ram-usage * 3.6}deg, @surface0 ${ram-usage * 3.6}deg 360deg);")
+          (box
+            :class "circular-inner"
+            :orientation "v"
+            :space-evenly false
+            :spacing 2
+            (label :class "metric-value-large" :text "${ram-usage}%")
+            (label :class "metric-swap" :text "Swap: ${swap-usage}%"))))
+
+      (label :class "metric-label-large" :text "󰍛 RAM"))
+
+    ;; GPU
+    (box
+      :class "circular-metric"
+      :orientation "v"
+      :space-evenly false
+      :spacing 12
+      :halign "center"
+
+      (box
+        :class "circular-container"
+        (overlay
+          (box
+            :class "circular-bar gpu-circular"
+            :style "background: conic-gradient(@green 0deg ${gpu-usage * 3.6}deg, @surface0 ${gpu-usage * 3.6}deg 360deg);")
+          (box
+            :class "circular-inner"
+            :orientation "v"
+            :space-evenly false
+            :spacing 2
+            (label :class "metric-value-large" :text "${gpu-usage}%")
+            (label :class "metric-temp" :text "${gpu-temp}°C"))))
+
+      (label :class "metric-label-large" :text "󰢮 GPU"))
+
+    ;; Disque
+    (box
+      :class "circular-metric"
+      :orientation "v"
+      :space-evenly false
+      :spacing 12
+      :halign "center"
+
+      (box
+        :class "circular-container"
+        (overlay
+          (box
+            :class "circular-bar disk-circular"
+            :style "background: conic-gradient(@peach 0deg ${disk-usage * 3.6}deg, @surface0 ${disk-usage * 3.6}deg 360deg);")
+          (box
+            :class "circular-inner"
+            :orientation "v"
+            :space-evenly false
+            :spacing 2
+            (label :class "metric-value-large" :text "${disk-usage}%")
+            (label :class "metric-io" :text "${disk-io}"))))
+
+      (label :class "metric-label-large" :text "󰋊 Disque"))))
+
+;; ====================
+;; VARIABLES
+;; ====================
+
+;; Time & Date
+(defpoll time-hour :interval "1s"
+  "date '+%H:%M'")
+
+(defpoll time-date :interval "60s"
+  "date '+%A %d %B %Y'")
+
+;; User Info
+(defpoll user-name :interval "60s"
+  "whoami")
+
+(defpoll hostname :interval "60s"
+  "hostnamectl hostname")
+
+(defpoll uptime :interval "60s"
+  "uptime -p | sed 's/up //'")
+
+(defpoll ram-total :interval "3600s"
+  "free -h | awk '/^Mem:/ {print $2}'")
+
+(defpoll cpu-model :interval "3600s"
+  "lscpu | grep 'Model name' | cut -d':' -f2 | xargs | sed 's/ CPU.*//' | cut -c1-20")
+
+;; Music
+(defpoll music-cover :interval "2s"
+  "scripts/get-cover.sh || echo '/tmp/placeholder.png'")
+
+(defpoll music-title :interval "1s"
+  "playerctl metadata title 2>/dev/null || echo 'Pas de lecture'")
+
+(defpoll music-artist :interval "1s"
+  "playerctl metadata artist 2>/dev/null || echo ''")
+
+(defpoll music-status :interval "1s"
+  "playerctl status 2>/dev/null || echo 'Stopped'")
+
+(defpoll music-position-percent :interval "1s"
+  "playerctl metadata --format '{{ position }}' 2>/dev/null | awk '{pos=$1/1000000} END {print (pos && pos>0) ? int(pos/('$(playerctl metadata --format '{{ mpris:length }}' 2>/dev/null || echo 1)'/1000000)*100) : 0}'")
+
+(defpoll music-length :interval "2s"
+  "playerctl metadata --format '{{ mpris:length }}' 2>/dev/null | awk '{print $1/1000000}' || echo '1'")
+
+(defpoll music-position-time :interval "1s"
+  "playerctl position --format '{{ duration(position) }}' 2>/dev/null || echo '0:00'")
+
+(defpoll music-length-time :interval "2s"
+  "playerctl metadata --format '{{ duration(mpris:length) }}' 2>/dev/null || echo '0:00'")
+
+;; System Metrics
+(defpoll cpu-usage :interval "2s"
+  "top -bn1 | grep 'Cpu(s)' | awk '{print int($2 + $4)}'")
+
+(defpoll ram-usage :interval "2s"
+  "free | grep Mem | awk '{print int($3/$2 * 100)}'")
+
+(defpoll swap-usage :interval "2s"
+  "free | grep Swap | awk '{if($2>0) print int($3/$2 * 100); else print 0}'")
+
+(defpoll gpu-usage :interval "2s"
+  "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits 2>/dev/null || echo '0'")
+
+(defpoll disk-usage :interval "10s"
+  "df -h / | awk 'NR==2 {print int($5)}'")
+
+(defpoll disk-io :interval "2s"
+  "iostat -d -x 1 2 | awk '/^[sv]d[a-z]/ {sum+=$4} END {printf \"%.0f IO/s\", sum}'")
+
+(defpoll cpu-temp :interval "2s"
+  "sensors | grep 'Package id 0' | awk '{print int($4)}' || echo '0'")
+
+(defpoll gpu-temp :interval "2s"
+  "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader 2>/dev/null || echo '0'")

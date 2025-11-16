@@ -1,0 +1,24 @@
+[env]
+WINIT_X11_SCALE_FACTOR = "1"
+
+[window]
+padding = { x = 16, y = 18 }
+opacity = 0.8
+
+[font]
+size=11
+[font.normal]
+family = "CaskaydiaMono Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "CaskaydiaMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "CaskaydiaMono Nerd Font"
+style = "Italic"
+
+[font.bold_italic]
+family = "CaskaydiaMono Nerd Font"
+style = "Bold Italic"

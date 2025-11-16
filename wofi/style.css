@@ -1,0 +1,89 @@
+window {
+    margin: 0px;
+    border: 1px solid rgba(91, 159, 239, 0.3);
+    background-color: rgba(15, 15, 20, 0.85);
+    font-family: "Jetbrains Mono", "SF Mono", "Cascadia Code", monospace;
+    font-size: 14px;
+    border-radius: 8px;
+}
+#img {
+    margin-right: 8px;
+    padding: 2px;
+}
+#input {
+    margin: 12px;
+    padding: 12px 16px;
+    border: none;
+    background-color: rgba(26, 26, 36, 0.7);
+    color: #e8e8e8;
+    border-radius: 6px;
+    outline: none;
+}
+#inner-box {
+    margin: 8px;
+    padding: 4px;
+    background-color: transparent;
+    border-radius: 6px;
+}
+#outer-box {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgba(26, 26, 36, 0.7);
+    border-radius: 8px;
+}
+#scroll {
+    margin: 0px;
+    padding: 0px;
+    border-radius: 6px;
+}
+#text {
+    margin: 4px;
+    padding: 6px 10px;
+    color: #d4d4d8;
+}
+#entry {
+    margin: 2px 8px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-weight: 400;
+    border: 0;
+    outline: none;
+    transition: all 0.2s ease;
+}
+#entry:focus {
+    outline: none;
+    border: none;
+}
+#entry:selected {
+    background-color: rgba(91, 159, 239, 0.15);
+    color: #e8e8e8;
+    border-radius: 6px;
+    font-weight: 500;
+    background-image: none;
+    outline: none;
+    border: none;
+}
+#entry:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+#entry:selected:hover {
+    background-color: rgba(91, 159, 239, 0.2);
+}
+#text:selected {
+    color: #e8e8e8;
+}
+/* Détails expandés */
+#expander-box {
+    padding: 8px 12px;
+    margin: 4px 8px;
+    background-color: rgba(34, 34, 46, 0.5);
+    border-left: 2px solid rgba(91, 159, 239, 0.5);
+    border-radius: 6px;
+}
+#expander-box #text {
+    color: #a1a1aa;
+    font-size: 12px;
+}
+#expander-box:selected #text {
+    color: #e8e8e8;
+}

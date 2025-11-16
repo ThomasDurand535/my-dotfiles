@@ -1,0 +1,142 @@
+@import "../colors/colors.css";
+
+* {
+    color: @text;
+    font-family: "Jetbrains Nerd Font", "Font Awesome Kit", monospace;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+/* Groupes de modules avec fond blur */
+.modules-left,
+.modules-center,
+.modules-right {
+    background: rgba(36, 39, 58, 0.8);
+    border-radius: 12px;
+    padding: 0 8px;
+}
+
+/* Modules individuels sans fond ni margin */
+#workspaces,
+#clock,
+#cpu,
+#memory,
+#pulseaudio,
+#bluetooth,
+#network,
+#battery,
+#custom-notification {
+    background: transparent;
+    padding: 0 12px;
+    margin: 0;
+    border-radius: 0;
+    color: @text;
+}
+
+/* Clock */
+#clock {
+    color: @subtext1;
+    font-weight: 600;
+}
+
+/* Workspaces */
+#workspaces {
+    padding: 8px 0px;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: inherit;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    margin: 0 4px;
+    color: @overlay1;
+    background-color: @surface0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    min-width: 20px;
+}
+
+#workspaces button:hover {
+    background-color: @surface1;
+}
+
+#workspaces button.active {
+    background-color: @subtext1;
+    padding: 0 8px;
+    min-width: 40px;
+}
+
+/* CPU et RAM */
+#cpu {
+    color: @subtext1;
+}
+
+#memory {
+    color: @subtext1;
+}
+
+/* Modules à droite */
+#pulseaudio {
+    color: @green;
+}
+
+#bluetooth {
+    color: @mauve;
+}
+
+#network {
+    color: @sapphire;
+}
+#battery {
+    color: @yellow;
+}
+
+#battery.warning {
+    color: @peach;
+}
+
+#battery.critical {
+    color: @red;
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    to {
+        color: @base;
+    }
+}
+
+#battery.charging {
+    color: @green;
+}
+
+/* Notification button */
+#custom-notification {
+    color: @subtext1;
+    font-size: 16px;
+    padding: 0 12px;
+}
+
+/* Hover effects */
+#cpu:hover,
+#memory:hover,
+#pulseaudio:hover,
+#bluetooth:hover,
+#network:hover,
+#battery:hover,
+#clock:hover,
+#custom-notification:hover {
+    background: rgba(91, 96, 120, 0.3);
+    border-radius: 8px;
+}
