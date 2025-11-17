@@ -48,7 +48,6 @@
 
 .body {
     background: transparent;
-
     color: @subtext1;
     margin-top: 6px;
     line-height: 1.4;
@@ -83,8 +82,10 @@
     border: none;
     border-radius: 12px;
     padding: 0;
+    margin 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
+
 
 /* === EN-TÊTE === */
 .widget-title {
@@ -199,6 +200,6 @@ scrollbar slider {
     background: transparent;
     color: @subtext0;
     font-size: 13px;
-    padding: 40px 20px;
+    padding: 10px 10px;
     text-align: center;
 }
