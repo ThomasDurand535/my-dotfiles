@@ -24,7 +24,6 @@
 
 .tab-btn {
     all: unset;
-    background-color: transparent;
     border-radius: 10px;
     padding: 12px 0;
     transition: all 0.2s ease;
@@ -32,10 +31,6 @@
 
 .tab-btn:hover {
     background-color: @surface0;
-}
-
-.tab-btn.active {
-    background-color: @surface1;
 }
 
 .tab-icon {
@@ -61,6 +56,7 @@
 
 .calendar-content {
     padding: 0;
+    margin: 0;
 }
 
 .time-calendar-section {
@@ -72,7 +68,7 @@
 }
 
 .time-display {
-    font-size: 48px;
+    font-size: 64px;
     font-weight: bold;
     color: @text;
     letter-spacing: -2px;
@@ -85,6 +81,7 @@
 
 .calendar-widget {
     margin: 0;
+    padding: 0 8px;
 }
 
 calendar {
@@ -107,7 +104,7 @@ calendar:indeterminate {
 /* Profile Section */
 
 .profile-section {
-    padding-left: 24px;
+    padding: 0px 24px;
     border-left: 1px solid @surface0;
 }
 
@@ -119,7 +116,10 @@ calendar:indeterminate {
 }
 
 .profile-icon {
-    font-size: 48px;
+    min-width: 80px;
+    min-height: 80px;
+    border-radius: 40px;
+    background-size: cover;
     color: @mauve;
 }
 
@@ -138,15 +138,13 @@ calendar:indeterminate {
 }
 
 .spec-icon {
-    font-size: 14px;
-    background-color: gray;
-    padding: 0;
-    margin: 0;
+    font-size: 18px;
     color: @mauve;
+    padding: 0;
 }
 
 .spec-text {
-    font-size: 13px;
+    font-size: 16px;
     color: @subtext1;
 }
 
@@ -172,7 +170,6 @@ calendar:indeterminate {
 }
 
 .music-controls-section {
-    padding-left: 24px;
 }
 
 .music-title-large {
@@ -229,6 +226,7 @@ calendar:indeterminate {
 
 .music-controls-large {
     margin: 0;
+    padding: 0;
 }
 
 .music-btn-large {
@@ -271,13 +269,12 @@ calendar:indeterminate {
 }
 
 .circular-bar {
-    min-width: 120px;
-    min-height: 120px;
-    border-radius: 60px;
+    background-color: @surface0;
+    padding: 30px;
 }
 
 .circular-inner {
-    padding: 30px;
+    margin-top: 4px;
 }
 
 .metric-value-large {

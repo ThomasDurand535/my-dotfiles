@@ -9,7 +9,8 @@
   "output": "eDP-1",
   "modules-left": [
     "custom/notification",
-    "clock"
+    "clock",
+    "custom/launcher"
   ],
   "modules-center": [
     "hyprland/workspaces"
@@ -38,6 +39,11 @@
     "on-click": "swaync-client -t -sw",
     "tooltip": false
   },
+   "custom/launcher": {
+     "format": "",
+     "on-click": "eww open control-center",
+     "tooltip": false
+   },
   "clock": {
     "format": "󰥔 {:%H:%M}",
     "format-alt": "󰃭 {:%A %d %B %Y}",
