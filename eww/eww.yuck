@@ -99,64 +99,60 @@
     (box
         :class "calendar-content"
         :orientation "h"
-        :space-evenly false
         :spacing 24
+        :halign "start"
+
 
         ;; Section gauche : Horloge + Calendrier
         (box
-        :class "time-calendar-section"
-        :orientation "v"
-        :space-evenly false
-        :spacing 10
-        :valign "start"
+            :class "time-calendar-section"
+            :orientation "v"
+            :spacing 12
+            :halign "center"
+            :valign "start"
+            :space-evenly false
 
-        ;; Heure
+            ;; Heure
+            (box
+                :class "time-section"
+                :orientation "v"
+                :spacing 8
+                :space-evenly false
+                :halign "center"
+                (label
+                    :class "time-display"
+                    :text "${time-hour}")
+                (label
+                    :class "date-display"
+                    :text "${time-date}")
+            )
+
+            ;; Calendrier
+            (box
+                :valign "start"
+                :class "calendar-widget"
+                (calendar
+                    :height 100
+                    :show-week-numbers false)
+            )
+        )
+        ;; Section droite : Photo de profil + Infos
         (box
-            :class "time-section"
+            :class "profile-section"
             :orientation "v"
             :space-evenly false
-            :spacing 8
-            :halign "center"
-
-            (label
-            :class "time-display"
-            :text "${time-hour}")
-            (label
-            :class "date-display"
-            :text "${time-date}")
-        )
-
-        ;; Calendrier
-        (box
-            :class "calendar-widget"
-            :halign "center"
-            :valign "center"
-            (calendar :show-week-numbers false)
-        )
-    )
-
-    ;; Section droite : Photo de profil + Infos
-    (box
-        :class "profile-section"
-        :orientation "v"
-        :space-evenly false
-        :spacing 20
-        :width 350
-        :hexpand true
-        :valign "center"
-        :halign "center"
+            :spacing 20
+            :width 350
             (box
                 :class "photo-name"
                 :orientation "h"
                 :space-evenly false
                 :spacing 20
                 :hexpand true
-                :valign "start"
 
                 ;; Photo de profil
                 (box
                     :class "profile-picture"
-                    :valign "start"
                     (box
                         :class "profile-icon"
                         :style "background-image: url('${profile-picture}');"
@@ -169,7 +165,7 @@
                 :text "${user-name}"
                 :halign "start")
             )
-           (box
+            (box
                 :class "profile-info"
                 :orientation "v"
                 :spacing 8
@@ -228,6 +224,7 @@
             )
 
         )
+
     )
 )
 
@@ -483,7 +480,7 @@
   "scripts/get-cover.sh || echo '/tmp/placeholder.png'")
 
 (defpoll music-title :interval "1s"
-  "playerctl metadata title 2>/dev/null || echo 'Pas de lecture'")
+  "playerctl metadata title 2>/dev/null || echo 'No content'")
 
 (defpoll music-artist :interval "1s"
   "playerctl metadata artist 2>/dev/null || echo ''")

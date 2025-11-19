@@ -1,9 +1,9 @@
 @import "../colors/colors.css";
 
 * {
-    font-family: "Caskaydia Nerd Font", monospace;
+    font-family: "Caskaydia Mono Nerd Font";
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 800;
 }
 
 /* === NOTIFICATIONS FLOTTANTES === */
@@ -83,7 +83,7 @@
     border-radius: 12px;
     padding: 0;
     margin 0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0;
 }
 
 
