@@ -7,6 +7,13 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent": {
+    "default_model": {
+      "provider": "ollama",
+      "model": "mistral:7b"
+    },
+    "model_parameters": []
+  },
   "project_panel": {
     "hide_hidden": false
   },
