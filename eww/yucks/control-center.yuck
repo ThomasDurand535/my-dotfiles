@@ -3,8 +3,8 @@
 (defpoll audio_muted :interval "1s" "pactl get-sink-mute @DEFAULT_SINK@ | grep -q 'yes' && echo 'true' || echo 'false'")
 (defpoll mic_muted :interval "1s" "pactl get-source-mute @DEFAULT_SOURCE@ | grep -q 'yes' && echo 'true' || echo 'false'")
 
-(defpoll brightness :interval "1s" "brightnessctl g")
-(defpoll max_brightness :interval "5s" "brightnessctl m")
+(defpoll brightness :interval "1s" "brightnessctl -d intel_backlight g")
+(defpoll max_brightness :interval "5s" "brightnessctl -d intel_backlight m")
 (defpoll volume :interval "1s" "pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\\d+%' | head -n1 | tr -d '%'")
 
 
@@ -14,28 +14,31 @@
 (defwindow control-center
     :monitor 0
     :geometry
-    (geometry
-        :x "12px"
-        :y "5px"
-        :width "350px"
-        :height "200px"
-        :anchor "top right"
-    )
-    :stacking "overlay"
-    :windowtype "normal"
-    (eventbox
-        :onhoverlost "eww close control-center"
-        (control-center)
-    )
+        (geometry
+            :x "12px"
+            :y "5px"
+            :width "350px"
+            :height "200px"
+            :anchor "top right"
+        )
+        :stacking "overlay"
+        :windowtype "normal"
+        (eventbox
+            :class "window"
+            :onhoverlost "eww close control-center"
+            (control-center)
+        )
 )
 
 
 ;; Principal Widget
 (defwidget control-center []
-    (box :class "control-center"
+    (box
+        :class "control-center"
         :orientation "v"
         :space-evenly false
         :spacing 15
+        :radius 16
 
         ;; Section toggles
         (box :class "toggles-section"
@@ -103,10 +106,10 @@
                 :spacing 8
                 (label :class "slider-icon" :text "󰃟")
                 (scale :class "slider"
-                    :min 0
+                    :min 1
                     :max max_brightness
                     :value brightness
-                    :onchange "brightnessctl set {}"
+                    :onchange "brightnessctl -d intel_backlight set {}"
                 )
             )
             ;; Slider volume

@@ -1,18 +1,15 @@
 @import "../../colors/colors.css";
-
 /*  principal container */
 .control-center {
-    background: @base;
     border: none;
     border-radius: 16px;
     padding: 20px;
 }
-
 /* toggles */
 .control-center .toggles-section {
+    background: @base;
     margin-bottom: 10px;
 }
-
 /* toggle buttons */
 .control-center .toggle-btn {
     background: @surface0;
@@ -23,44 +20,36 @@
     text-shadow: inherit;
     background: inherit;
 }
-
 .control-center .toggle-btn:hover {
     background: @surface1;
     border-color: @surface2;
 }
-
 .control-center .toggle-btn.active {
     background: @lavender;
     border-color: @lavender;
 }
-
 /* toggles icones */
 .control-center .toggle-icon {
     font-size: 24px;
     color: @text;
     margin-left: -3px;
 }
-
 .control-center .toggle-btn.active .toggle-icon {
     color: @crust;
 }
-
 /* Section des sliders */
 .control-center .sliders-section {
     padding-top: 5px;
 }
-
 /* Container de chaque slider */
 .control-center .slider-box {
 }
-
 /* slider icons */
 .control-center .slider-icon {
     font-size: 20px;
     color: @text;
     min-width: 30px;
 }
-
 /* Sliders */
 .control-center .slider {
     min-width: 200px;
@@ -68,7 +57,7 @@
 .control-center scale trough {
     background: @surface2;
     border-radius: 20px;
-    min-height: 32px;
+    min-height: 20px;
     min-width: 200px;
     border: none;
     margin: 0;

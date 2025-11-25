@@ -4,7 +4,7 @@ window {
     background-color: rgba(15, 15, 20, 0.85);
     font-family: "Jetbrains Mono", "SF Mono", "Cascadia Code", monospace;
     font-size: 14px;
-    border-radius: 8px;
+    border-radius: 12px;
 }
 #img {
     margin-right: 8px;
@@ -29,7 +29,7 @@ window {
     margin: 0px;
     padding: 0px;
     background-color: rgba(26, 26, 36, 0.7);
-    border-radius: 8px;
+    border-radius: 12px;
 }
 #scroll {
     margin: 0px;

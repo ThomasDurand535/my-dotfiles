@@ -1,9 +1,9 @@
 @import "../colors/colors.css";
 
 * {
-    font-family: "Caskaydia Mono Nerd Font";
+    font-family: "Caskaydia Nerd Font", "Font Awesome Kit";
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 700;
 }
 
 /* === NOTIFICATIONS FLOTTANTES === */
@@ -11,7 +11,6 @@
     background: alpha(@mantle, 0.95);
     border: none;
     border-radius: 8px;
-    margin: 6px;
     padding: 14px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
@@ -78,7 +77,7 @@
 
 /* === CENTRE DE CONTRÔLE === */
 .control-center {
-    background: alpha(@mantle, 0.95);
+    background: alpha(@base, 1);
     border: none;
     border-radius: 12px;
     padding: 0;

@@ -7,23 +7,38 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "agent": {
-    "default_model": {
-      "provider": "ollama",
-      "model": "mistral:7b"
-    },
-    "model_parameters": []
-  },
-  "project_panel": {
-    "hide_hidden": false
-  },
+	"tabs": {
+		"git_status": false
+	},
+	"tab_bar": {
+		"show": true
+	},
+	"hard_tabs": true,
+	"tab_size": 4,
+	"edit_predictions": {
+		"mode": "subtle"
+	},
+	"agent": {
+		"inline_assistant_model": {
+			"provider": "ollama",
+			"model": "qwen2.5-coder:7b"
+		},
+		"default_model": {
+			"provider": "ollama",
+			"model": "qwen2.5-coder:7b"
+		},
+		"model_parameters": []
+	},
+	"project_panel": {
+		"hide_hidden": false
+	},
 
-  "hide_mouse": "on_typing",
-  "cursor_blink": true,
-  "buffer_font_weight": 400.0,
-  "buffer_font_family": "CaskaydiaMono Nerd Font Mono",
-  "icon_theme": "Base Charmed Icons",
-  "ui_font_size": 16,
-  "buffer_font_size": 14.0,
-  "theme": "Catppuccin Macchiato (Blur)"
+	"hide_mouse": "on_typing",
+	"cursor_blink": true,
+	"buffer_font_weight": 400.0,
+	"buffer_font_family": "CaskaydiaMono Nerd Font Mono",
+	"icon_theme": "Base Charmed Icons",
+	"ui_font_size": 16,
+	"buffer_font_size": 14.0,
+	"theme": "Catppuccin Macchiato (Blur)"
 }

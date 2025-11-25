@@ -1,8 +1,6 @@
 @import "../../colors/colors.css";
 
 .device-info {
-    background: inherit;
-    background-color: @base;
     border-radius: 16px;
     border: 1px solid @surface0;
     padding: 0;

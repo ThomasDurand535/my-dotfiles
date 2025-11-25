@@ -2,3 +2,4 @@ width=600
 height=400
 allow_images=true
 no_actions=true
+columns=2

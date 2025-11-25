@@ -2,5 +2,9 @@
 @import "styles/control-center.css";
 
 * {
-    background-color: transparent;
+    all: unset;
+}
+
+.window {
+    background-color: @base;
 }

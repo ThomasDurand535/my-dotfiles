@@ -1,23 +1,25 @@
 ;; ====================
-;; CONTROL CENTER CONFIG
+;; DEVICE INFO CONFIG
 ;; ====================
 
 (defwindow device-info
     :monitor 0
-    :geometry (geometry
-    :x "0px"
-    :y "5px"
-    :width "700px"
-    :height "300px"
-    :anchor "top center")
     :stacking "overlay"
-    :exclusive false
-    :focusable true
+    :windowtype "normal"
+    :geometry (geometry
+        :x "0px"
+        :y "5px"
+        :width "700px"
+        :height "300px"
+        :anchor "top center"
+    )
     :close-on-focus-lost true
     (eventbox
+        :class "window"
         :onhoverlost "eww close device-info"
         (device-info-widget)
     )
+
 )
 
 (defvar current-tab "calendar")
