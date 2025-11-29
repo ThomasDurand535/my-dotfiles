@@ -19,8 +19,7 @@
     "network",
     "pulseaudio",
     "bluetooth",
-    "battery",
-    "custom/config"
+    "battery"
   ],
   "hyprland/workspaces": {
     "format": "",
@@ -51,7 +50,8 @@
   "pulseaudio": {
       "format": "󰕾 {volume}%",
       "format-muted": "󰖁 {volume}%",
-      "tooltip": false
+      "tooltip": false,
+      "on-click": "alacritty -e wiremix"
   },
   "bluetooth": {
       "format": " {status}",
@@ -81,11 +81,6 @@
       "",
       ""
     ]
-  },
-  "custom/config": {
-    "format": "  ",
-    "on-click": "eww open control-center",
-    "tooltip": false
   }
 
 }

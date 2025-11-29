@@ -3,12 +3,8 @@
 (defpoll audio_muted :interval "1s" "pactl get-sink-mute @DEFAULT_SINK@ | grep -q 'yes' && echo 'true' || echo 'false'")
 (defpoll mic_muted :interval "1s" "pactl get-source-mute @DEFAULT_SOURCE@ | grep -q 'yes' && echo 'true' || echo 'false'")
 
-(defpoll brightness :interval "1s" "brightnessctl -d intel_backlight g")
-(defpoll max_brightness :interval "5s" "brightnessctl -d intel_backlight m")
+(defpoll brightness :interval "1s" "brightnessctl -c backlight g")
 (defpoll volume :interval "1s" "pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\\d+%' | head -n1 | tr -d '%'")
-
-
-
 
 ;; Window
 (defwindow control-center
@@ -107,9 +103,9 @@
                 (label :class "slider-icon" :text "󰃟")
                 (scale :class "slider"
                     :min 1
-                    :max max_brightness
+                    :max 101
                     :value brightness
-                    :onchange "brightnessctl -d intel_backlight set {}"
+                   :onchange "for d in /sys/class/backlight/*; do brightnessctl -d \"$(basename \"$d\")\" set {}%; done"
                 )
             )
             ;; Slider volume

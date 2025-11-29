@@ -3,7 +3,7 @@
 # Menu d'actions avec rofi et icônes FontAwesome
 
 # Définir les options avec icônes Unicode FontAwesome
-OPTIONS="󰖩  Wifi\n󰂯  Bluetooth\n󰡨  Docker\n󰄮  Btop\n󰂚  Notification Center\n󰐥  Power"
+OPTIONS="󰖩  Wifi\n󰂯  Bluetooth\n󰡨  Docker\n  Btop\n   Wiremix\n󰐥  Power"
 
 CHOICE=$(echo -e "$OPTIONS" | rofi -dmenu -i -p "Actions" -theme "$HOME/.config/rofi/configs/trigger.rasi")
 
@@ -23,14 +23,14 @@ case "$CHOICE" in
         alacritty -e lazydocker &
         # Alternative: alacritty -e lazydocker
         ;;
-    "󰄮  Btop")
+    "  Btop")
         # Ouvre btop dans un terminal
         alacritty -e btop &
         # Alternative: alacritty -e btop
         ;;
-    "󰂚  Notification Center")
+    "   Wiremix")
         # Ouvre le centre de notifications (adapte selon ton environnement)
-        swaync-client -t &
+        alacritty -e wiremix &
         # Alternative pour d'autres gestionnaires: dunstctl history-pop
         ;;
     "󰐥  Power")

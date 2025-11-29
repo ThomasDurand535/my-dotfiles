@@ -9,7 +9,7 @@
     :geometry (geometry
         :x "0px"
         :y "5px"
-        :width "700px"
+        :width "600px"
         :height "300px"
         :anchor "top center"
     )
@@ -19,7 +19,6 @@
         :onhoverlost "eww close device-info"
         (device-info-widget)
     )
-
 )
 
 (defvar current-tab "calendar")
@@ -53,8 +52,13 @@
                 :class "tab-btn ${current-tab == 'system' ? 'active' : ''}"
                 :onclick "eww update current-tab=system"
                 :hexpand true
-                (label :class "tab-icon" :text "󰍛")
-            )
+                (label :class "tab-icon" :text "󰍛"))
+
+            (button
+                :class "tab-btn ${current-tab == 'control' ? 'active' : ''}"
+                :onclick "eww update current-tab=control"
+                :hexpand true
+                (label :class "tab-icon" :text "󰒓"))
         )
 
         ;; Contenu des onglets
@@ -87,6 +91,15 @@
                 :transition "slidedown"
                 :duration "300ms"
                 (system-tab)
+            )
+
+            ;; Onglet Control Center
+            (revealer
+                :reveal "${current-tab == 'control'}"
+                :visible "${current-tab == 'control'}"
+                :transition "slidedown"
+                :duration "300ms"
+                (control-tab)
             )
         )
     )
@@ -444,6 +457,116 @@
         (label :class "metric-label-large" :text "󰋊 Disque"))))
 
 ;; ====================
+;; ONGLET CONTROL CENTER
+;; ====================
+
+(defwidget control-tab []
+    (box
+        :class "control-content"
+        :orientation "h"
+        :space-evenly false
+        :spacing 24
+        :valign "start"
+
+        ;; Section toggles - grille 2x2
+        (box :class "toggles-section"
+            :orientation "v"
+            :space-evenly false
+            :spacing 12
+
+            ;; Ligne 1 : WiFi + Bluetooth
+            (box
+                :orientation "h"
+                :space-evenly false
+                :spacing 12
+
+                ;; Toggle WiFi
+                (button
+                	:height 87
+                    :width 90
+                    :class "toggle-btn ${wifi-status == 'enabled' ? 'active' : ''}"
+                    :onclick "nmcli radio wifi ${wifi-status == 'enabled' ? 'off' : 'on'}"
+                    (label :class "toggle-icon wifi" :text "󰖩")
+                )
+
+                ;; Toggle Bluetooth
+                (button
+                	:height 84
+                    :width 90
+                    :class "toggle-btn ${bluetooth-status == 'enabled' ? 'active' : ''}"
+                    :onclick "bluetoothctl power ${bluetooth-status == 'enabled' ? 'off' : 'on'}"
+                    (label :class "toggle-icon bluetooth" :text "󰂯")
+                )
+            )
+
+            ;; Ligne 2 : Micro + Volume
+            (box
+                :orientation "h"
+                :space-evenly false
+                :spacing 12
+
+                ;; Toggle Micro
+                (button
+                	:height 87
+                    :width 90
+                    :class "toggle-btn ${mic-status == 'unmuted' ? 'active' : ''}"
+                    :onclick "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+                    (label :class "toggle-icon micro" :text "${mic-status == 'muted' ? '󰍭' : '󰍬'}")
+                )
+
+                ;; Toggle Volume
+                (button
+                	:height 87
+                    :width 90
+                    :class "toggle-btn ${speaker-status == 'unmuted' ? 'active' : ''}"
+                    :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+                    (label :class "toggle-icon volume" :text "${speaker-status == 'muted' ? '󰖁' : '󰕾'}")
+                )
+            )
+        )
+
+        ;; Section sliders - centrée
+        (box :class "sliders-section"
+            :orientation "v"
+            :space-evenly false
+            :spacing 20
+            :valign "center"
+
+            ;; Slider luminosité
+            (box :class "slider-box"
+                :orientation "h"
+                :space-evenly false
+                :spacing 42
+                :halign "center"
+                (label :class "slider-icon" :text "󰃟")
+                (scale :class "slider"
+                    :min 1
+                    :max 101
+                    :value brightness-level
+                    :onchange "for d in /sys/class/backlight/*; do brightnessctl -d \"$(basename \"$d\")\" set {}%; done"
+                )
+            )
+
+            ;; Slider volume
+            (box :class "slider-box"
+                :orientation "h"
+                :space-evenly false
+                :spacing 42
+                :halign "center"
+                (label :class "slider-icon" :text "󰕾")
+                (scale :class "slider"
+                    :min 0
+                    :max 101
+                    :value volume-level
+                    :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%"
+                )
+            )
+        )
+
+    )
+)
+
+;; ====================
 ;; VARIABLES
 ;; ====================
 
@@ -498,25 +621,6 @@
 (defpoll music-length-time :interval "2s"
   "playerctl metadata --format '{{ duration(mpris:length) }}' 2>/dev/null || echo '0:00'")
 
-;; Controls
-(defpoll volume-level :interval "1s"
-  "pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\\d+%' | head -1 | tr -d '%'")
-
-(defpoll brightness-level :interval "1s"
-  "brightnessctl get | awk '{print int($1/$(brightnessctl max)*100)}'")
-
-(defpoll wifi-status :interval "2s"
-  "nmcli radio wifi | grep -q enabled && echo 'enabled' || echo 'disabled'")
-
-(defpoll bluetooth-status :interval "2s"
-  "bluetoothctl show | grep -q 'Powered: yes' && echo 'enabled' || echo 'disabled'")
-
-(defpoll mic-status :interval "1s"
-  "pactl get-source-mute @DEFAULT_SOURCE@ | grep -q 'no' && echo 'unmuted' || echo 'muted'")
-
-(defpoll speaker-status :interval "1s"
-  "pactl get-sink-mute @DEFAULT_SINK@ | grep -q 'no' && echo 'unmuted' || echo 'muted'")
-
 ;; System Metrics
 (defpoll cpu-usage :interval "2s"
   "top -bn1 | grep 'Cpu(s)' | awk '{print int($2 + $4)}'")
@@ -541,3 +645,22 @@
 
 (defpoll gpu-temp :interval "2s"
   "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader 2>/dev/null || echo '0'")
+
+;; Control Center Variables
+(defpoll wifi-status :interval "2s"
+  "nmcli radio wifi | grep -q enabled && echo 'enabled' || echo 'disabled'")
+
+(defpoll bluetooth-status :interval "2s"
+  "bluetoothctl show | grep -q 'Powered: yes' && echo 'enabled' || echo 'disabled'")
+
+(defpoll mic-status :interval "1s"
+  "pactl get-source-mute @DEFAULT_SOURCE@ | grep -q 'no' && echo 'unmuted' || echo 'muted'")
+
+(defpoll speaker-status :interval "1s"
+  "pactl get-sink-mute @DEFAULT_SINK@ | grep -q 'no' && echo 'unmuted' || echo 'muted'")
+
+(defpoll volume-level :interval "1s"
+  "pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\\d+%' | head -1 | tr -d '%'")
+
+(defpoll brightness-level :interval "1s"
+  "brightnessctl get | awk '{print int($1/$(brightnessctl max)*100)}'")
