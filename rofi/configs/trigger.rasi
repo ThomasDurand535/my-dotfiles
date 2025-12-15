@@ -12,7 +12,6 @@ mainbox {
 
 listview {
     columns:                     1;
-    lines:                       6;
     fixed-height:                false;
     spacing:                     5px;
     padding:                     0px;

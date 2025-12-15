@@ -1,0 +1,52 @@
+@import "../style.rasi"
+
+window {
+    width:                       33%;
+    height:                      330px;
+    location:                    south;
+    anchor:                      south;
+}
+
+
+
+mainbox {
+    spacing:                     10px;
+    padding:                     15px;
+    children:                    [ "inputbar", "listview" ];
+}
+
+inputbar {
+    spacing:                     10px;
+    padding:                     10px;
+    border-radius:               8px;
+    children:                    [ "entry" ];
+    text-color: 				@foreground;
+    background-color:            white / 5%;
+
+}
+entry {
+    background-color: transparent;
+    text-color: @foreground;
+    border: 0px;
+}
+listview {
+    columns:                     1;
+    fixed-height:                true;
+    spacing:                     5px;
+    padding:                     0px;
+    scrollbar:                   true;
+    scrollbar-width:             6px;
+    scrollbar-handle-color:      @selected;
+}
+
+element {
+    spacing:                     10px;
+    padding:                     18px 24px;
+    border-radius:               8px;
+    orientation:                 horizontal;
+}
+
+element selected.normal {
+    background-color:            white / 5%;
+    text-color:                  @selected;
+}

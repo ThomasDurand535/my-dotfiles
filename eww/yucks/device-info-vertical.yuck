@@ -1,0 +1,380 @@
+;; ====================
+;; VERTICAL PANEL CONFIG
+;; ====================
+
+(defwindow device-info-vertical
+    :monitor 0
+    :stacking "fg"
+    :windowtype "dock"
+    :geometry (geometry
+        :x "4px"
+        :y "4px"
+        :width "400px"
+        :height "100%"
+        :anchor "right top"
+    )
+    (eventbox
+        :onhoverlost "eww close device-info-vertical"
+        (scroll
+            :vscroll true
+            :hscroll false
+            (box
+                :class "device-info-vertical"
+                :orientation "v"
+                :space-evenly false
+                :spacing 8
+
+                ;; Profile Section
+                (box
+                    :class "vertical-section"
+                    :orientation "h"
+                    :space-evenly false
+                    (box
+                        :class "profile-vertical"
+                        :orientation "v"
+                        :space-evenly false
+
+                        (box
+                            :class "profile-picture-vertical"
+                            :style "background-image: url('${profile-picture}');"
+                        )
+
+                        (label
+                            :class "profile-name-vertical"
+                            :text "${user-name}")
+                    )
+
+                    (box
+                        :orientation "v"
+                        :space-evenly true
+
+                        (box
+                            :class "spec-row-vertical"
+                            :space-evenly false
+                            :spacing 12
+                            :orientation "h"
+                            (label :halign "start" :class "spec-icon-vertical" :text "󰟀")
+                            (label :class "spec-text-vertical" :text "${hostname}" :halign "start")
+                        )
+
+                        (box
+                            :class "spec-row-vertical"
+                            :space-evenly false
+                            :spacing 12
+                            :orientation "h"
+                            (label :halign "start" :class "spec-icon-vertical" :text "󰥔")
+                            (label :class "spec-text-vertical" :text "${uptime}" :halign "start")
+                        )
+
+                        (box
+                            :class "spec-row-vertical"
+                            :space-evenly false
+                            :spacing 12
+                            :orientation "h"
+                            (label :halign "start" :class "spec-icon-vertical" :text "󰍛")
+                            (label :class "spec-text-vertical" :text "${ram-total} RAM" :halign "start")
+                        )
+
+                        (box
+                            :class "spec-row-vertical"
+                            :space-evenly false
+                            :spacing 12
+                            :orientation "h"
+                            (label :halign "start" :class "spec-icon-vertical" :text "󰻠")
+                            (label :class "spec-text-vertical" :text "${cpu-model}" :halign "start")
+                        )
+                    )
+                )
+
+
+                ;; System Metrics Section
+                (box
+                    :class "vertical-section"
+                    :orientation "h"
+                    :space-evenly true
+
+                    ;; CPU
+                    (box
+                        :class "metric-vertical"
+                        :orientation "v"
+                        :space-evenly false
+                        :valign "center"
+                        (circular-progress
+                            :class "circular-bar-vertical"
+                            :value cpu-usage
+                            :thickness 6
+                            :start-at 75
+                            :clockwise true
+                            :style "color: @blue;"
+                            :height 70
+                            :width 70
+
+                            (box
+                                :orientation "v"
+                                :space-evenly false
+                                :spacing 2
+                                :valign "center"
+                                :halign "center"
+                                (label :class "metric-value-vertical" :text "${cpu-usage}%")
+                                (label :class "metric-temp-vertical" :text "${cpu-temp}°C")
+                            )
+                        )
+
+                        (label :class "metric-label-vertical" :text "󰻠  CPU")
+                    )
+
+                    ;; RAM
+                    (box
+                        :class "metric-vertical"
+                        :orientation "v"
+                        :space-evenly false
+                        :halign "center"
+
+                        (circular-progress
+                            :class "circular-bar-vertical"
+                            :value ram-usage
+                            :thickness 6
+                            :start-at 75
+                            :clockwise true
+                            :style "color: @mauve;"
+                            :height 70
+                            :width 70
+
+                            (box
+                                :orientation "v"
+                                :space-evenly false
+                                :spacing 2
+                                :valign "center"
+                                :halign "center"
+                                (label :class "metric-value-vertical" :text "${ram-usage}%")
+                                (label :class "metric-swap-vertical" :text "Swap: ${swap-usage}%")
+                            )
+                        )
+
+                        (label :class "metric-label-vertical" :text "󰍛  RAM")
+                    )
+
+                    ;; GPU
+                    (box
+                        :class "metric-vertical"
+                        :orientation "v"
+                        :space-evenly false
+                        :halign "center"
+
+                        (circular-progress
+                            :class "circular-bar-vertical"
+                            :value gpu-usage
+                            :thickness 6
+                            :start-at 75
+                            :clockwise true
+                            :style "color: @green;"
+                            :height 70
+                            :width 70
+
+                            (box
+                                :orientation "v"
+                                :space-evenly false
+                                :spacing 2
+                                :valign "center"
+                                :halign "center"
+                                (label :class "metric-value-vertical" :text "${gpu-usage}%")
+                                (label :class "metric-temp-vertical" :text "${gpu-temp}°C")
+                            )
+                        )
+
+                        (label :class "metric-label-vertical" :text "󰢮  GPU")
+                    )
+
+                    ;; Disque
+                    (box
+                        :class "metric-vertical"
+                        :orientation "v"
+                        :space-evenly false
+                        :halign "center"
+
+                        (circular-progress
+                            :class "circular-bar-vertical"
+                            :value disk-usage
+                            :thickness 6
+                            :start-at 75
+                            :clockwise true
+                            :style "color: @peach;"
+                            :height 70
+                            :width 70
+
+                            (box
+                                :orientation "v"
+                                :space-evenly false
+                                :spacing 2
+                                :valign "center"
+                                :halign "center"
+                                (label :class "metric-value-vertical" :text "${disk-usage}%")
+                                (label :class "metric-io-vertical" :text "${disk-io}")
+                            )
+                        )
+
+                        (label :class "metric-label-vertical" :text "󰋊  Disque")
+                    )
+                )
+
+                ;; Music Section
+                (box
+                    :class "vertical-section"
+                    :orientation "v"
+                    :space-evenly false
+
+                    (box
+                        :class "music-cover-vertical"
+                        :style "background-image: url('${music-cover}');")
+
+                    (label
+                        :class "music-title-vertical"
+                        :limit-width 30
+                        :wrap true
+                        :text "${music-title}")
+
+                    (label
+                        :class "music-artist-vertical"
+                        :limit-width 30
+                        :wrap true
+                        :text "${music-artist}")
+
+                    (scale
+                        :class "music-progress-vertical"
+                        :value "${music-position-percent}"
+                        :min 0
+                        :max 100
+                        :onchange "playerctl position $(echo {} | awk '{print $1 * '${music-length}' / 100}')")
+
+                    (box
+                        :class "time-labels-vertical"
+                        :space-evenly true
+                        (label :class "time-current-vertical" :text "${music-position-time}" :halign "start")
+                        (label :class "time-total-vertical" :text "${music-length-time}" :halign "end")
+                    )
+
+                    (box
+                        :class "music-controls-vertical"
+                        :halign "center"
+                        :spacing 12
+
+                        (button
+                            :class "music-btn-vertical"
+                            :onclick "playerctl previous"
+                            (label :text "󰒮"))
+
+                        (button
+                            :class "music-btn-vertical music-play-vertical"
+                            :onclick "playerctl play-pause"
+                            (label :text "${music-status == 'Playing' ? '󰏤' : '󰐊'}"))
+
+                        (button
+                            :class "music-btn-vertical"
+                            :onclick "playerctl next"
+                            (label :text "󰒭"))
+                    )
+                )
+
+                ;; Control Center Section
+                (box
+                    :class "vertical-section"
+                    :orientation "v"
+                    :space-evenly false
+
+                    ;; Toggles
+                    (box
+                        :class "toggles-vertical"
+                        :orientation "h"
+                        :space-evenly true
+                        :spacing 10
+
+                        ;; WiFi + Bluetooth
+                        (box
+                            :orientation "h"
+                            :space-evenly true
+                            :spacing 10
+
+                            (button
+                                :class "toggle-btn-vertical ${wifi-status == 'enabled' ? 'active' : ''}"
+                                :onclick "nmcli radio wifi ${wifi-status == 'enabled' ? 'off' : 'on'}"
+                                :hexpand true
+                                (label :class "toggle-icon-vertical" :text "󰖩")
+                            )
+
+                            (button
+                                :class "toggle-btn-vertical ${bluetooth-status == 'enabled' ? 'active' : ''}"
+                                :onclick "bluetoothctl power ${bluetooth-status == 'enabled' ? 'off' : 'on'}"
+                                :hexpand true
+                                (label :class "toggle-icon-vertical" :text "󰂯")
+                            )
+                        )
+
+                        ;; Micro + Volume
+                        (box
+                            :orientation "h"
+                            :space-evenly true
+                            :spacing 10
+
+                            (button
+                                :class "toggle-btn-vertical ${mic-status == 'unmuted' ? 'active' : ''}"
+                                :onclick "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+                                :hexpand true
+                                (label :class "toggle-icon-vertical" :text "${mic-status == 'muted' ? '󰍭' : '󰍬'}")
+                            )
+
+                            (button
+                                :class "toggle-btn-vertical ${speaker-status == 'unmuted' ? 'active' : ''}"
+                                :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+                                :hexpand true
+                                (label :class "toggle-icon-vertical" :text "${speaker-status == 'muted' ? '󰖁' : '󰕾'}")
+                            )
+                        )
+                    )
+
+                    ;; Sliders
+                    (box
+                        :orientation "v"
+                        :space-evenly false
+                        :spacing 12
+
+                        ;; Brightness
+                        (box
+                            :class "slider-box-vertical"
+                            :orientation "h"
+                            :space-evenly false
+                            :spacing 12
+
+                            (label :class "slider-icon-vertical" :text "󰃟")
+                            (scale
+                                :class "slider-vertical"
+                                :hexpand true
+                                :min 1
+                                :max 101
+                                :value brightness-level
+                                :onchange "for d in /sys/class/backlight/*; do brightnessctl -d \"$(basename \"$d\")\" set {}%; done"
+                            )
+                        )
+
+                        ;; Volume
+                        (box
+                            :class "slider-box-vertical"
+                            :orientation "h"
+                            :space-evenly false
+                            :spacing 12
+
+                            (label :class "slider-icon-vertical" :text "󰕾")
+                            (scale
+                                :class "slider-vertical"
+                                :hexpand true
+                                :min 0
+                                :max 101
+                                :value volume-level
+                                :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%"
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    )
+)

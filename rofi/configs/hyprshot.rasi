@@ -1,33 +1,43 @@
 @import "../style.rasi"
 
 window {
-    width:                       350px;
+
 }
 
 mainbox {
-    spacing:                     10px;
-    padding:                     15px;
+    spacing:                     20px;
+    padding:                     30px;
     children:                    [ "listview" ];
 }
 
 listview {
-    columns:                     1;
-    lines:                       3;
-    fixed-height:                false;
-    spacing:                     5px;
+    columns:                     3;
+    lines:                       1;
+    fixed-height:                true;
+    spacing:                     20px;
     padding:                     0px;
 }
 
 element {
-    spacing:                     10px;
-    padding:                     18px 24px;
-    border-radius:               8px;
-    orientation:                 horizontal;
+    spacing:                     0px;
+    padding:                     50px 40px;
+    border-radius:               12px;
+    orientation:                 vertical;
+    min-width:                   120px;
+    min-height:                  120px;
 }
 
 element selected.normal {
     background-color:            white / 5%;
     text-color:                  @selected;
+}
+
+
+element-text {
+    enabled:                     true;
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+    font:                        "Caskaydia Nerd Font Semibold 48";
 }
 
 inputbar {

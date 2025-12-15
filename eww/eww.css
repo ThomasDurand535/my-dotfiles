@@ -1,10 +1,10 @@
 @import "./styles/device-info.css";
-@import "styles/control-center.css";
+@import "styles/device-info-vertical.css";
 
 * {
-    all: unset;
+	all: unset;
 }
 
 .window {
-    background-color: @base;
+	background-color: @base;
 }

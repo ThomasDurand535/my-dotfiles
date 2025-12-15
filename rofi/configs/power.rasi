@@ -1,33 +1,56 @@
-
-
 @import "../style.rasi"
 
 window {
-    width:                       300px;
+    fullscreen:                  true;
 }
 
 mainbox {
-    spacing:                     10px;
-    padding:                     15px;
-    children:                    [ "listview" ];
+    spacing:                     0px;
+    padding:                     0px;
+    children:                    [ "dummy", "listview", "dummy2" ];
+    orientation:                 vertical;
+}
+
+dummy {
+    expand:                      true;
+    background-color:            transparent;
+}
+
+dummy2 {
+    expand:                      true;
+    background-color:            transparent;
 }
 
 listview {
-    columns:                     1;
-    lines:                       3;
-    fixed-height:                false;
-    spacing:                     5px;
-    padding:                     0px;
+    columns:                     3;
+    lines:                       1;
+    orientation:                 horizontal;
+    spacing:                     20px;
+    padding:                     20px 25%;
+    expand:                      false;
+    fixed-columns:               true;
+    dynamic:                     false;
 }
 
 element {
-    spacing:                     10px;
-    padding:                     18px 24px;
-    border-radius:               8px;
-    orientation:                 horizontal;
+    spacing:                     0px;
+    padding:                     50px;
+    border-radius:               50%;
+    orientation:                 vertical;
+    width:                       150px;
+    height:                      150px;
+    expand:                      false;
 }
 
 element selected.normal {
     background-color:            white / 5%;
     text-color:                  @selected;
+    border-radius:               50%;
+}
+
+element-text {
+    enabled:                     true;
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+    font:                        "Caskaydia Nerd Font Semibold 48";
 }

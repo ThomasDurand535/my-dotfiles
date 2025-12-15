@@ -12,14 +12,14 @@
     "clock"
   ],
   "modules-center": [
-    "custom/launcher",
     "hyprland/workspaces",
   ],
   "modules-right": [
     "network",
     "pulseaudio",
     "bluetooth",
-    "battery"
+    "battery",
+    "custom/launcher",
   ],
   "hyprland/workspaces": {
     "format": "",
@@ -39,7 +39,7 @@
   },
    "custom/launcher": {
      "format": "",
-     "on-click": "eww open device-info",
+     "on-click": "eww open device-info-vertical",
      "tooltip": false
    },
   "clock": {

@@ -1,0 +1,55 @@
+@import "../style.rasi"
+
+window {
+    fullscreen: true;
+}
+
+mainbox {
+    spacing: 0px;
+    padding: 0px;
+    orientation: vertical;
+    children: [ "dummy", "listview", "dummy2" ];
+}
+
+dummy {
+    expand: true;
+    background-color: transparent;
+}
+
+dummy2 {
+    expand: true;
+    background-color: transparent;
+}
+
+listview {
+    columns: 3;
+    lines: 1;
+    orientation: horizontal;
+    spacing: 20px;
+    padding: 20px 25%;
+    expand:                      false;
+    fixed-columns: true;
+    dynamic: false;
+}
+
+element {
+    spacing: 0px;
+    padding: 50px;
+    border-radius: 50%;
+    orientation: vertical;
+    width: 150px;
+    height: 150px;
+}
+
+element selected.normal {
+    background-color: white / 5%;
+    text-color: @selected;
+    border-radius: 50%;
+}
+
+element-text {
+    enabled: true;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    font: "Caskaydia Nerd Font Semibold 48";
+}

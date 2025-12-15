@@ -1,0 +1,259 @@
+@import "../../colors/colors.css";
+
+.device-info-vertical {
+	background-color: transparent;
+	border-radius: 16px;
+}
+
+/* ====================
+   SECTIONS VERTICALES
+   ==================== */
+
+.vertical-section {
+	background-color: @mantle;
+	border-radius: 16px;
+	padding: 12px;
+}
+
+.section-title {
+	font-size: 14px;
+	font-weight: 600;
+	color: @subtext0;
+	letter-spacing: 1px;
+}
+
+/* ====================
+   PROFILE SECTION
+   ==================== */
+
+.profile-vertical {
+	margin: 12px;
+}
+
+.profile-picture-vertical {
+	min-width: 80px;
+	min-height: 80px;
+	margin: 0 16px;
+	background-size: cover;
+	background-position: center;
+	border-radius: 50%;
+}
+
+.profile-name-vertical {
+	font-size: 20px;
+	font-weight: bold;
+	color: @text;
+}
+
+.spec-row-vertical {
+	padding: 3px 0;
+}
+
+.spec-icon-vertical {
+	font-size: 16px;
+	color: @text;
+	min-width: 30px;
+}
+
+.spec-text-vertical {
+	font-size: 12px;
+	color: @subtext1;
+}
+
+/* ====================
+   MUSIC SECTION
+   ==================== */
+
+.music-cover-vertical {
+	min-width: 120px;
+	min-height: 120px;
+	background-size: cover;
+	background-position: center;
+	border-radius: 12px;
+}
+
+.music-title-vertical {
+	font-size: 16px;
+	font-weight: bold;
+	color: @text;
+}
+
+.music-artist-vertical {
+	font-size: 13px;
+	color: @subtext0;
+	margin-top: 4px;
+}
+
+.music-progress-vertical {
+	all: unset;
+	min-height: 4px;
+	border-radius: 2px;
+	background-color: @surface1;
+	margin: 12px 0 8px;
+}
+
+.music-progress-vertical trough {
+	all: unset;
+	min-height: 4px;
+	border-radius: 2px;
+	background-color: @surface1;
+}
+
+.music-progress-vertical highlight {
+	all: unset;
+	background-color: @mauve;
+	border-radius: 2px;
+}
+
+.music-progress-vertical slider {
+	all: unset;
+	min-width: 0;
+	min-height: 0;
+	background-color: transparent;
+}
+
+.time-labels-vertical {
+	margin-top: 4px;
+}
+
+.time-current-vertical,
+.time-total-vertical {
+	font-size: 11px;
+	color: @subtext0;
+}
+
+.music-controls-vertical {
+	margin-top: 12px;
+}
+
+.music-btn-vertical {
+	all: unset;
+	background-color: @surface1;
+	border-radius: 10px;
+	padding: 10px 14px;
+	font-size: 18px;
+	color: @text;
+	transition: all 0.2s ease;
+}
+
+.music-btn-vertical:hover {
+	background-color: @surface2;
+}
+
+.music-play-vertical {
+	background-color: @mauve;
+	padding: 10px 16px;
+}
+
+.music-play-vertical:hover {
+	background-color: @lavender;
+}
+
+/* ====================
+   SYSTEM METRICS
+   ==================== */
+
+.metric-vertical {
+	margin: 12px;
+}
+
+.circular-bar-vertical {
+	background-color: @surface1;
+	padding: 20px;
+}
+
+.metric-value-vertical {
+	font-size: 14px;
+	font-weight: bold;
+	color: @text;
+}
+
+.metric-temp-vertical,
+.metric-swap-vertical,
+.metric-io-vertical {
+	font-size: 9px;
+	color: @subtext0;
+}
+
+.metric-label-vertical {
+	font-size: 13px;
+	font-weight: 600;
+	color: @text;
+	margin-top: 8px;
+}
+
+/* ====================
+   CONTROL CENTER
+   ==================== */
+
+.toggles-vertical {
+	margin-bottom: 16px;
+}
+
+.toggle-btn-vertical {
+	background: @surface1;
+	border-radius: 12px;
+	border-color: @surface1;
+	transition: all 0.3s ease;
+	box-shadow: inherit;
+	text-shadow: inherit;
+	min-height: 50px;
+}
+
+.toggle-btn-vertical:hover {
+	background: @surface2;
+	border-color: @surface2;
+}
+
+.toggle-btn-vertical.active {
+	background: @text;
+	border-color: @text;
+}
+
+.toggle-icon-vertical {
+	font-size: 20px;
+	color: @text;
+}
+
+.toggle-btn-vertical.active .toggle-icon-vertical {
+	color: @crust;
+}
+
+.slider-box-vertical {
+	margin-bottom: 12px;
+	margin-left: 24px;
+	margin-right: 24px;
+}
+
+.slider-icon-vertical {
+	font-size: 20px;
+	color: @text;
+	min-width: 35px;
+}
+
+.slider-box-vertical scale trough {
+	background: @surface2;
+	border-radius: 12px;
+	min-height: 16px;
+	min-width: 250px;
+	border: none;
+	margin: 0;
+	padding: 0 12px;
+}
+
+.slider-box-vertical scale trough highlight {
+	background: @text;
+	border-radius: 12px;
+	border: none;
+	margin: 0 -12px; /* Important : compense le padding du trough */
+}
+
+.slider-box-vertical scale trough slider {
+	background: transparent;
+	border: none;
+	border-radius: 50%;
+	min-height: 0px;
+	min-width: 0px;
+	margin: 0;
+	box-shadow: none;
+}
