@@ -87,18 +87,22 @@ window#waybar {
 
 /* Modules à droite */
 #pulseaudio {
-	color: @green;
+	color: @subtext1;
 }
 
 #bluetooth {
-	color: @mauve;
+	color: @subtext1;
+}
+#bluetooth.connected {
+	color: @blue;
 }
 
 #network {
-	color: @sapphire;
+	color: @subtext1;
 }
+
 #battery {
-	color: @yellow;
+	color: @subtext1;
 }
 
 #battery.warning {
@@ -107,18 +111,11 @@ window#waybar {
 
 #battery.critical {
 	color: @red;
-	animation: blink 1s linear infinite;
 }
-
-@keyframes blink {
-	to {
-		color: @base;
-	}
-}
-
 #battery.charging {
 	color: @green;
 }
+
 
 #custom-notification {
 	color: @subtext1;
