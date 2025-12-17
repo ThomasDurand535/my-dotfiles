@@ -42,7 +42,7 @@ window#waybar {
 
 /* Clock */
 #clock {
-	color: @subtext1;
+	color: @text;
 	font-weight: 600;
 }
 
@@ -71,38 +71,38 @@ window#waybar {
 }
 
 #workspaces button.active {
-	background-color: @subtext1;
+	background-color: @text;
 	padding: 0 8px;
 	min-width: 40px;
 }
 
 /* CPU et RAM */
 #cpu {
-	color: @subtext1;
+	color: @text;
 }
 
 #memory {
-	color: @subtext1;
+	color: @text;
 }
 
 /* Modules à droite */
 #pulseaudio {
-	color: @subtext1;
+	color: @text;
 }
 
 #bluetooth {
-	color: @subtext1;
+	color: @text;
 }
 #bluetooth.connected {
 	color: @blue;
 }
 
 #network {
-	color: @subtext1;
+	color: @text;
 }
 
 #battery {
-	color: @subtext1;
+	color: @text;
 }
 
 #battery.warning {
@@ -116,9 +116,8 @@ window#waybar {
 	color: @green;
 }
 
-
 #custom-notification {
-	color: @subtext1;
+	color: @text;
 	font-size: 16px;
 	padding: 0 12px;
 }
