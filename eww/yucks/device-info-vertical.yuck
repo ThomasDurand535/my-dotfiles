@@ -280,6 +280,7 @@
                     :class "vertical-section"
                     :orientation "v"
                     :space-evenly false
+                    :spacing 12
 
                     ;; Toggles
                     (box
@@ -307,13 +308,6 @@
                                 :hexpand true
                                 (label :class "toggle-icon-vertical" :text "󰂯")
                             )
-                        )
-
-                        ;; Micro + Volume
-                        (box
-                            :orientation "h"
-                            :space-evenly true
-                            :spacing 10
 
                             (button
                                 :class "toggle-btn-vertical ${mic-status == 'unmuted' ? 'active' : ''}"

@@ -187,7 +187,9 @@
    ==================== */
 
 .toggles-vertical {
-	margin-bottom: 16px;
+	padding: 12px;
+	background-color: @surface0;
+	border-radius: 12px;
 }
 
 .toggle-btn-vertical {
