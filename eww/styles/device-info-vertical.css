@@ -8,7 +8,6 @@
 /* ====================
    SECTIONS VERTICALES
    ==================== */
-
 .vertical-section {
 	background-color: @mantle;
 	border-radius: 16px;
@@ -25,7 +24,6 @@
 /* ====================
    PROFILE SECTION
    ==================== */
-
 .profile-vertical {
 	margin: 12px;
 }
@@ -63,13 +61,13 @@
 /* ====================
    MUSIC SECTION
    ==================== */
-
 .music-cover-vertical {
 	min-width: 120px;
 	min-height: 120px;
 	background-size: cover;
 	background-position: center;
 	border-radius: 12px;
+	margin-bottom: 20px;
 }
 
 .music-title-vertical {
@@ -123,7 +121,6 @@
 }
 
 .music-controls-vertical {
-	margin-top: 12px;
 }
 
 .music-btn-vertical {
@@ -152,7 +149,6 @@
 /* ====================
    SYSTEM METRICS
    ==================== */
-
 .metric-vertical {
 	margin: 12px;
 }
@@ -185,7 +181,6 @@
 /* ====================
    CONTROL CENTER
    ==================== */
-
 .toggles-vertical {
 	padding: 12px;
 	background-color: @surface0;
@@ -221,6 +216,47 @@
 	color: @crust;
 }
 
+/* ====================
+   POWER PROFILES SLIDER
+   ==================== */
+.power-profile-btn {
+	padding: 6px 6px;
+	border-radius: 10px;
+}
+
+/* Bouton sélectionné - Power Saver */
+.power-profile-btn.active:first-child {
+	background: linear-gradient(to bottom right, @green, @teal);
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+	opacity: 1;
+}
+
+/* Bouton sélectionné - Balanced */
+.power-profile-btn.active:nth-child(2) {
+	background: linear-gradient(to bottom right, @blue, @sapphire);
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+	opacity: 1;
+}
+
+/* Bouton sélectionné - Performance */
+.power-profile-btn.active:last-child {
+	background: linear-gradient(to bottom right, @peach, @red);
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+	opacity: 1;
+}
+
+.power-profile-icon {
+	font-size: 24px;
+	color: @subtext0;
+}
+
+.power-profile-btn.active .power-profile-icon {
+	color: @text;
+	font-size: 28px;
+}
+/* ====================
+   SLIDERS
+   ==================== */
 .slider-box-vertical {
 	margin-bottom: 12px;
 	margin-left: 24px;
@@ -247,7 +283,7 @@
 	background: @text;
 	border-radius: 12px;
 	border: none;
-	margin: 0 -12px; /* Important : compense le padding du trough */
+	margin: 0 -12px;
 }
 
 .slider-box-vertical scale trough slider {

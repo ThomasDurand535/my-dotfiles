@@ -5,7 +5,7 @@
 # network and disk I/O.
 
 WIDGET_DIR=$(dirname "$0")
-DEFAULT_COVER="$WIDGET_DIR/assets/DEFAULTImage.jpeg"
+DEFAULT_COVER="$WIDGET_DIR/../DEFAULTImage.jpg"
 CACHE_DIR="$HOME/.cache/eww/music-widget"
 mkdir -p "$CACHE_DIR"
 

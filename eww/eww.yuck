@@ -1,101 +1,72 @@
 (include "./yucks/device-info.yuck")
 (include "./yucks/device-info-vertical.yuck")
-
 ;; ====================
 ;; VARIABLES
 ;; ====================
-
 ;; Time & Date
 (defpoll time-hour :interval "1s"
   "date '+%H:%M'")
-
 (defpoll time-date :interval "60s"
   "date '+%A %d %B %Y'")
-
 ;; User Info
 (defpoll user-name :interval "60s"
   "whoami")
-
 (defpoll hostname :interval "60s"
   "hostnamectl hostname")
-
 (defpoll profile-picture :interval "60s"
   "readlink -f ~/.face/profile-picture.jpg")
-
 (defpoll uptime :interval "60s"
   "uptime -p | sed 's/up //'")
-
 (defpoll ram-total :interval "3600s"
   "free -h | awk '/^Mem:/ {print $2}'")
-
 (defpoll cpu-model :interval "3600s"
   "lscpu | grep 'Model name' | cut -d':' -f2 | xargs | sed 's/ CPU.*//' | cut -c1-20")
-
 ;; Music
 (defpoll music-cover :interval "2s"
   "scripts/get-cover.sh || echo '/tmp/placeholder.png'")
-
 (defpoll music-title :interval "1s"
   "playerctl metadata title 2>/dev/null || echo 'No content'")
-
 (defpoll music-artist :interval "1s"
   "playerctl metadata artist 2>/dev/null || echo ''")
-
 (defpoll music-status :interval "1s"
   "playerctl status 2>/dev/null || echo 'Stopped'")
-
 (defpoll music-position-percent :interval "1s"
   "playerctl metadata --format '{{ position }}' 2>/dev/null | awk '{pos=$1/1000000} END {print (pos && pos>0) ? int(pos/('$(playerctl metadata --format '{{ mpris:length }}' 2>/dev/null || echo 1)'/1000000)*100) : 0}'")
-
 (defpoll music-length :interval "2s"
   "playerctl metadata --format '{{ mpris:length }}' 2>/dev/null | awk '{print $1/1000000}' || echo '1'")
-
 (defpoll music-position-time :interval "1s"
   "playerctl position --format '{{ duration(position) }}' 2>/dev/null || echo '0:00'")
-
 (defpoll music-length-time :interval "2s"
   "playerctl metadata --format '{{ duration(mpris:length) }}' 2>/dev/null || echo '0:00'")
-
 ;; System Metrics
 (defpoll cpu-usage :interval "2s"
   "top -bn1 | grep 'Cpu(s)' | awk '{print int($2 + $4)}'")
-
 (defpoll ram-usage :interval "2s"
   "free | grep Mem | awk '{print int($3/$2 * 100)}'")
-
 (defpoll swap-usage :interval "2s"
   "free | grep Swap | awk '{if($2>0) print int($3/$2 * 100); else print 0}'")
-
 (defpoll gpu-usage :interval "2s"
   "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits 2>/dev/null || echo '0'")
-
 (defpoll disk-usage :interval "10s"
   "df -h / | awk 'NR==2 {print int($5)}'")
-
 (defpoll disk-io :interval "2s"
   "iostat -d -x 1 2 | awk '/^[sv]d[a-z]/ {sum+=$4} END {printf \"%.0f IO/s\", sum}'")
-
 (defpoll cpu-temp :interval "2s"
   "sensors | grep 'Package id 0' | awk '{print int($4)}' || echo '0'")
-
 (defpoll gpu-temp :interval "2s"
   "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader 2>/dev/null || echo '0'")
-
 ;; Control Center Variables
-(defpoll wifi-status :interval "2s"
+(defpoll wifi-status :interval "30s"
   "nmcli radio wifi | grep -q enabled && echo 'enabled' || echo 'disabled'")
-
-(defpoll bluetooth-status :interval "2s"
+(defpoll bluetooth-status :interval "30s"
   "bluetoothctl show | grep -q 'Powered: yes' && echo 'enabled' || echo 'disabled'")
-
 (defpoll mic-status :interval "1s"
   "pactl get-source-mute @DEFAULT_SOURCE@ | grep -q 'no' && echo 'unmuted' || echo 'muted'")
-
 (defpoll speaker-status :interval "1s"
   "pactl get-sink-mute @DEFAULT_SINK@ | grep -q 'no' && echo 'unmuted' || echo 'muted'")
-
 (defpoll volume-level :interval "1s"
   "pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\\d+%' | head -1 | tr -d '%'")
-
 (defpoll brightness-level :interval "1s"
   "brightnessctl get | awk '{print int($1/$(brightnessctl max)*100)}'")
+(defpoll power-profile :interval "30s"
+  "powerprofilesctl get")

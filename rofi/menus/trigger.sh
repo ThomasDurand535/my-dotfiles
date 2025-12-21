@@ -3,36 +3,32 @@
 # Menu d'actions avec rofi et icônes FontAwesome
 
 # Définir les options avec icônes Unicode FontAwesome
-OPTIONS="󰖩  Wifi\n󰂯  Bluetooth\n󰡨  Docker\n  Btop\n   Wiremix\n󰐥  Power"
+OPTIONS="󰖩   Wifi\n󰂯 Bluetooth\n󰡨  Docker\n  Git\n   Btop\n    Wiremix\n  Gdu\n󰐥  Power"
 
 CHOICE=$(echo -e "$OPTIONS" | rofi -dmenu -i -p "Actions" -theme "$HOME/.config/rofi/configs/trigger.rasi")
 
 case "$CHOICE" in
-    "󰖩  Wifi")
-        # Ouvre le gestionnaire wifi (adapte selon ton environnement)
+    "󰖩   Wifi")
         alacritty -e gazelle &
-        # Alternative: nmtui ou nmcli
         ;;
-    "󰂯  Bluetooth")
-        # Ouvre le gestionnaire bluetooth
+    "󰂯 Bluetooth")
         alacritty -e bluetui &
-        # Alternative: bluetoothctl
         ;;
     "󰡨  Docker")
-        # Ouvre un terminal avec docker stats ou lazydocker
         alacritty -e lazydocker &
-        # Alternative: alacritty -e lazydocker
         ;;
-    "  Btop")
-        # Ouvre btop dans un terminal
+    "  Git")
+    	alacritty -e bash -c "echo n | lazygit" &
+        ;;
+    "   Btop")
         alacritty -e btop &
-        # Alternative: alacritty -e btop
         ;;
-    "   Wiremix")
-        # Ouvre le centre de notifications (adapte selon ton environnement)
+    "    Wiremix")
         alacritty -e wiremix &
-        # Alternative pour d'autres gestionnaires: dunstctl history-pop
         ;;
+    "  Gdu")
+    	alacritty -e gdu / &
+     	;;
     "󰐥  Power")
         # Lance le sous-menu power
         ~/.config/rofi/menus/power.sh &
@@ -41,4 +37,3 @@ case "$CHOICE" in
         exit 0
         ;;
 esac
-
