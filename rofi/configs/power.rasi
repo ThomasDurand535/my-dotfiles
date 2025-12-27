@@ -22,11 +22,11 @@ dummy2 {
 }
 
 listview {
-    columns:                     3;
+    columns:                     4;
     lines:                       1;
     orientation:                 horizontal;
     spacing:                     20px;
-    padding:                     20px 25%;
+    padding:                     20px 20%;
     expand:                      false;
     fixed-columns:               true;
     dynamic:                     false;
