@@ -7,31 +7,35 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-	"format_on_save": "on",
+	"show_edit_predictions": false,
+ "features": {
+  "edit_prediction_provider": "zed"
+ },
+ "format_on_save": "on",
 	"tabs": {
-		"git_status": false
+		"git_status": true,
 	},
 	"tab_bar": {
-		"show": true
+		"show": true,
 	},
 	"hard_tabs": true,
 	"tab_size": 4,
 	"edit_predictions": {
-		"mode": "subtle"
+		"mode": "subtle",
 	},
 	"agent": {
 		"inline_assistant_model": {
 			"provider": "ollama",
-			"model": "qwen2.5-coder:7b"
+			"model": "qwen2.5-coder:7b",
 		},
 		"default_model": {
 			"provider": "ollama",
-			"model": "qwen2.5-coder:7b"
+			"model": "qwen2.5-coder:7b",
 		},
-		"model_parameters": []
+		"model_parameters": [],
 	},
 	"project_panel": {
-		"hide_hidden": false
+		"hide_hidden": false,
 	},
 
 	"hide_mouse": "on_typing",
@@ -41,5 +45,5 @@
 	"icon_theme": "Base Charmed Icons",
 	"ui_font_size": 16,
 	"buffer_font_size": 14.0,
-	"theme": "Catppuccin Macchiato (Blur)"
+	"theme": "Catppuccin Macchiato (Blur)",
 }
