@@ -27,11 +27,11 @@ fi
 
 # Determine hyprshot mode flag
 case "$selected_mode" in
-    *"󱂬"*)
+    *"󱣴"*)
         MODE_FLAG="-m region"
         MODE_NAME="Region"
         ;;
-    *"󱣴"*)
+    *"󱂬"*)
         MODE_FLAG="-m window"
         MODE_NAME="Window"
         ;;
