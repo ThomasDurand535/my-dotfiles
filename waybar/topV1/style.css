@@ -1,0 +1,137 @@
+@import "../../colors/colors.css";
+
+* {
+	color: @text;
+	font-family: "Jetbrains Nerd Font", "Font Awesome Kit", monospace;
+	font-size: 13px;
+	font-weight: 500;
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+}
+
+window#waybar {
+	background: transparent;
+}
+
+/* Groupes de modules avec fond blur */
+.modules-left,
+.modules-center,
+.modules-right {
+	background: @base;
+	border-radius: 12px;
+	padding: 0 8px;
+}
+
+/* Modules individuels sans fond ni margin */
+#workspaces,
+#clock,
+#cpu,
+#memory,
+#pulseaudio,
+#bluetooth,
+#network,
+#battery,
+#custom-notification,
+#custom-launcher {
+	padding: 0 12px;
+	margin: 0;
+	border-radius: 0;
+	color: @text;
+}
+
+/* Clock */
+#clock {
+	color: @text;
+	font-weight: 600;
+}
+
+/* Workspaces */
+#workspaces {
+	padding: 8px 0px;
+}
+
+#workspaces button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+	background: inherit;
+}
+
+#workspaces button {
+	padding: 0 8px;
+	margin: 0 4px;
+	background-color: @surface1;
+	border-radius: 8px;
+	transition: all 0.3s ease;
+	min-width: 20px;
+}
+
+#workspaces button:hover {
+	background-color: @subtext0;
+}
+
+#workspaces button.active {
+	background-color: @text;
+	padding: 0 8px;
+	min-width: 40px;
+}
+
+/* CPU et RAM */
+#cpu {
+	color: @text;
+}
+
+#memory {
+	color: @text;
+}
+
+/* Modules à droite */
+#pulseaudio {
+	color: @text;
+}
+
+#bluetooth {
+	color: @text;
+}
+#bluetooth.connected {
+	color: @blue;
+}
+
+#network {
+	color: @text;
+}
+
+#battery {
+	color: @text;
+}
+
+#battery.warning {
+	color: @peach;
+}
+
+#battery.critical {
+	color: @red;
+}
+#battery.charging {
+	color: @green;
+}
+
+#custom-notification {
+	color: @text;
+	font-size: 16px;
+	padding: 0 12px;
+}
+
+/* Hover effects */
+#cpu:hover,
+#memory:hover,
+#pulseaudio:hover,
+#bluetooth:hover,
+#network:hover,
+#battery:hover,
+#clock:hover,
+#custom-notification:hover,
+#custom-launcher:hover {
+	background: rgba(91, 96, 120, 0.3);
+	border-radius: 8px;
+}

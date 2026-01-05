@@ -1,4 +1,4 @@
-@import "../colors/colors.css";
+@import "../../colors/colors.css";
 
 * {
 	color: @text;
@@ -11,14 +11,14 @@
 }
 
 window#waybar {
-	background: transparent;
+	background: @base;
 }
 
 /* Groupes de modules avec fond blur */
 .modules-left,
 .modules-center,
 .modules-right {
-	background: @base-transparent;
+	background: transparent;
 	border-radius: 12px;
 	padding: 0 8px;
 }

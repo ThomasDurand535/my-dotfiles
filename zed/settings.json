@@ -7,14 +7,16 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+	"prettier": {
+		"allowed": true,
+	},
 	"git_panel": {
-  "sort_by_path": false
- },
- "show_edit_predictions": false,
- "features": {
-  "edit_prediction_provider": "zed"
- },
- "format_on_save": "on",
+		"sort_by_path": false,
+	},
+	"show_edit_predictions": false,
+	"features": {
+		"edit_prediction_provider": "zed",
+	},
 	"tabs": {
 		"git_status": true,
 	},
