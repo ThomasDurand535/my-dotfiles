@@ -8,7 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
 	"base_keymap": "VSCode",
-	"prettier": {
+ "prettier": {
 		"allowed": true,
 		"useTabs": true,
 	},
@@ -16,6 +16,9 @@
 		"sort_by_path": false,
 	},
 	"show_edit_predictions": false,
+	"features": {
+		"edit_prediction_provider": "zed",
+	},
 	"tabs": {
 		"git_status": true,
 	},
@@ -25,7 +28,6 @@
 	"hard_tabs": true,
 	"tab_size": 4,
 	"edit_predictions": {
-		"provider": "zed",
 		"mode": "subtle",
 	},
 	"agent": {

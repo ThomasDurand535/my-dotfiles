@@ -18,7 +18,7 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-	background: @base;
+	background: @base-transparent;
 	border-radius: 12px;
 	padding: 0 8px;
 }
