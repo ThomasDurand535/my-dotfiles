@@ -23,7 +23,6 @@
   ],
   "hyprland/workspaces": {
     "format": "",
-    "on-click": "activate",
     "format-icons": {
       "active": "",
       "default": ""

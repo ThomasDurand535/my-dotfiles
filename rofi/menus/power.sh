@@ -12,7 +12,7 @@ case "$CHOICE" in
         systemctl reboot
 	;;
     *""*)
-    	hyprctl dispatch exit
+    	killall Hyprland
         ;;
     *"󰐥"*)
         systemctl poweroff

@@ -3,8 +3,3 @@ import = [
     "~/.config/colors/colors.toml",
     "~/.config/alacritty/general.toml"
 ]
-
-[[keyboard.bindings]]
-key = "Return"
-mods = "Shift"
-chars = "\u001B\r"

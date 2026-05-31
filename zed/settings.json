@@ -7,15 +7,39 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-	"base_keymap": "VSCode",
+	"lsp": {
+  "vtsls": {
+   "settings": {
+    "typescript": {
+     "updateImportsOnFileMove": {
+      "enabled": "always"
+     }
+    },
+    "javascript": {
+     "updateImportsOnFileMove": {
+      "enabled": "always"
+     }
+    }
+   },
+   "enable_lsp_tasks": true
+  }
+ },
+ "outline_panel": {
+  "dock": "left"
+ },
+ "collaboration_panel": {
+  "dock": "left"
+ },
+ "base_keymap": "VSCode",
 	"prettier": {
 		"allowed": true,
 		"useTabs": true,
 	},
 	"git_panel": {
-		"sort_by_path": false,
+		"dock": "left",
+  "sort_by_path": false,
 	},
-	"show_edit_predictions": false,
+	"show_edit_predictions": true,
 	"tabs": {
 		"git_status": true,
 	},
@@ -25,11 +49,12 @@
 	"hard_tabs": true,
 	"tab_size": 4,
 	"edit_predictions": {
-		"provider": "zed",
-		"mode": "subtle",
+		"provider": "ollama",
+		"mode": "eager",
 	},
 	"agent": {
-		"inline_assistant_model": {
+		"dock": "right",
+  "inline_assistant_model": {
 			"provider": "ollama",
 			"model": "qwen2.5-coder:7b",
 		},
@@ -40,7 +65,8 @@
 		"model_parameters": [],
 	},
 	"project_panel": {
-		"hide_hidden": false,
+		"dock": "left",
+  "hide_hidden": false,
 	},
 
 	"hide_mouse": "on_typing",
@@ -51,4 +77,5 @@
 	"ui_font_size": 16,
 	"buffer_font_size": 14.0,
 	"theme": "Catppuccin Macchiato (Blur)",
+	"format_on_save": "on",
 }
